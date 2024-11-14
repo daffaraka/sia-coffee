@@ -59,7 +59,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Jabatan:</strong>
-                        <select name="roles[]" class="livesearch form-control" multiple>
+                        <select name="role" class="form-control" >
                             <option value="">Pilih Jabatan</option>
 
                             <option value="Admin">Admin</option>

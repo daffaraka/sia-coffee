@@ -20,14 +20,14 @@
                 @foreach ($produk as $data)
                     <tr class="">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->nama_produk }}</td>
                         <td>
-                            <img src="{{ asset('produk/'.$data->gambar_produk) }}" width="200" alt="">
+                            <img src="{{ asset($data->gambar_produk) }}" style="width: 200px; height: auto;" class="rounded-0" alt="{{$data->gambar_produk}}">
                         </td>
                         <td>
                             {{ $data->deskripsi }}
                         </td>
-                        <td>Rp. {{ number_format($data->hargak) }}</td>
+                        <td>Rp. {{ number_format($data->harga_produk) }}</td>
                         <td>
                             <a href="{{route('produk.edit',$data->id)}}" class="btn btn-info">Edit</a>
                             <a href="{{route('produk.destroy',$data->id)}}" class="btn btn-danger">Hapus</a>

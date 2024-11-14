@@ -37,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($stok as $data)
+                    @foreach ($stok as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nama_bahan_baku }}</td>
@@ -86,19 +86,14 @@
                             <td>{{ $data->terakhir_diedit_by }}</td>
                             <td>{{ \Carbon\Carbon::parse($data->updated_at)->locale('id')->translatedFormat('d F Y') }}</td>
                             <td>
-                                @can('stok_bahan_baku-edit')
                                     <a href="{{ route('stok.edit', $data->id) }}" class="btn btn-warning">Edit</a>
-                                @endcan
-                                @can('stok_bahan_baku-delete')
                                     <a href="#" class="btn btn-danger delete-btn" data-id="{{ $data->id }}">Hapus</a>
-                                @endcan
 
                             </td>
 
                         </tr>
-                    @empty
-                        <h3>Belum ada data</h3>
-                    @endforelse
+
+                    @endforeach
 
                 </tbody>
             </table>
@@ -108,41 +103,11 @@
 
     </div>
 
-    @include('vendor.sweetalert.alert')
+    {{-- @include('vendor.sweetalert.alert') --}}
 @endsection
-
+{{--
 <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/DataTables/datatables.min.js') }}"></script>
 <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            language: {
-                paginate: {
-                    previous: '<span class="fa fa-chevron-left"></span>',
-                    next: '<span class="fa fa-chevron-right"></span>' // or '→'
 
-                }
-            }
-        });
-
-        $('.delete-btn').click(function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-
-            Swal.fire({
-                title: 'Anda yakin?',
-                text: "Anda tidak dapat mengembalikan tindakan ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus saja!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lanjutkan dengan tindakan hapus
-                    window.location = "{{ route('stok.delete', ':id') }}".replace(':id', id);
-                }
-            })
-        });
-    });
-</script>
+</script> --}}

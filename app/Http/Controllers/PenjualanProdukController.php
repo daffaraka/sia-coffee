@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penjualan;
+use App\Models\PenjualanProduk;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -9,9 +11,9 @@ class PenjualanProdukController extends Controller
 {
     public function index()
     {
-        $pembelian = TransaksiPembelian::with(['supplier', 'pembelianBarang.barang'])->get();
+        $penjualan = Penjualan::with(['produk', 'penjualan_produk'])->get();
 
-        return view('pembelian.pembelian-index', compact('pembelian'));
+        return view('penjualan', compact('pembelian'));
     }
 
 

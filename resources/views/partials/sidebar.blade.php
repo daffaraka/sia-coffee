@@ -27,14 +27,14 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('stok-gudang.index')}}">
                 <span class="menu-title">Stok Gudang</span>
                 <i class="mdi mdi-warehouse menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="index.html">
-                <span class="menu-title">Pembelian Produk</span>
+                <span class="menu-title">Penjualan Produk</span>
                 <i class="mdi mdi-cart-plus menu-icon"></i>
             </a>
         </li>

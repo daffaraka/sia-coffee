@@ -29,13 +29,13 @@ class ProdukController extends Controller
         $fileName = $file->getClientOriginalName();
         $time = now()->format('Y-m-d H-i-s');
         $fileSaved = $request->nama_produk . '-' . $time . $fileName;
-        $file->move('produk', $fileSaved);
+        $filePath = $file->move('upload/produk', $fileSaved);
 
         $produk = new Produk();
         $produk->nama_produk = $request->nama_produk;
         $produk->deskripsi = $request->deskripsi;
         $produk->harga_produk = $request->harga_produk;
-        $produk->gambar_produk = $fileSaved;
+        $produk->gambar_produk = $filePath;
         $produk->save();
 
 
@@ -68,11 +68,11 @@ class ProdukController extends Controller
             $file = $request->file('gambar_produk');
             $fileName = $file->getClientOriginalName();
             $fileSaved = $request->nama_produk . '-' . $time . $fileName;
-            if (File::exists('produk/' . $produk->gambar_produk)) {
-                File::delete('produk/' . $produk->gambar_produk);
-                $file->move('produk', $fileSaved);
+            if (File::exists('upload/produk/' . $produk->gambar_produk)) {
+                File::delete('upload/produk/' . $produk->gambar_produk);
+                $filePath = $file->move('upload/produk', $fileSaved);
             } else {
-                $file->move('produk', $fileSaved);
+                $filePath = $file->move('upload/produk', $fileSaved);
             }
         } else {
             $fileSaved = $produk->gambar_produk;
@@ -88,7 +88,7 @@ class ProdukController extends Controller
         $produk->nama_produk = $request->nama_produk;
         $produk->deskripsi = $request->deskripsi;
         $produk->harga_produk = $request->harga_produk;
-        $produk->gambar_produk = $fileSaved;
+        $produk->gambar_produk = $filePath;
         $produk->save();
 
         return redirect()->route(' produk.index');

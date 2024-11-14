@@ -24,12 +24,12 @@ class StokGudangController extends Controller
     {
         $stok = StokGudang::all();
 
-        return view('dashboard.stok-bahan-baku.stok-index', compact('stok'));
+        return view('stok-gudang.stok-index', compact('stok'));
     }
 
     public function create()
     {
-        return view('dashboard.stok-bahan-baku.stok-create');
+        return view('stok-gudang.stok-create');
     }
 
     public function store(Request $request)
@@ -98,16 +98,12 @@ class StokGudangController extends Controller
             $jm = $stok->jumlah_minimal;
         }
 
-        return view('dashboard.stok-bahan-baku.stok-edit', compact('stok', 'jb', 'jm'));
+        return view('stok-gudang.stok-edit', compact('stok', 'jb', 'jm'));
     }
 
     public function update(Request $request, $id)
     {
         $stok = StokGudang::find($id);
-        // $raw_jm = str_replace(',', '', $request->jumlah_minimal);
-
-        // $jumlah_minimal = intval($raw_jm);
-        // $jumlah_minimal = ;
         $jumlah_minimal = $request->jumlah_minimal;
 
         $jumlah = $request->jumlah;

@@ -16,10 +16,6 @@
             <input id="" class="form-control" type="number" name="harga_produk" value="{{$produk->harga_produk}}">
         </div>
         <div class="form-group mb-3">
-            <label for="">Stok</label>
-            <input id="" class="form-control" type="number" name="stok" value="{{$produk->stok}}">
-        </div>
-        <div class="form-group mb-3">
             <label for="">Gambar Produk</label>
             <input id="" class="form-control" type="file" accept="image/*" name="gambar_produk">
         </div>
